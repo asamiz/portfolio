@@ -723,13 +723,16 @@ li {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
+  height: 100dvh; /* Dynamic viewport height for mobile */
   background: #0c0c0c;
   z-index: 9999;
   display: flex;
   align-items: center;
   justify-content: center;
   animation: terminalFadeOut 1s ease-in-out 4s forwards;
+  /* Fix for iOS Safari */
+  -webkit-overflow-scrolling: touch;
 }
 
 .terminal-content {
@@ -738,8 +741,10 @@ li {
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
   width: 90%;
   max-width: 600px;
-  max-height: 400px;
+  max-height: 70vh;
   border: 1px solid #333;
+  /* Ensure proper sizing on mobile */
+  min-height: 200px;
 }
 
 .terminal-header {
@@ -827,6 +832,34 @@ li {
 
 .boot-output-line.warning {
   color: #ffbd2e;
+}
+
+/* Mobile Terminal Adjustments */
+@media (max-width: 768px) {
+  .terminal-loader {
+    padding: 20px;
+    align-items: flex-start;
+    padding-top: 15vh;
+  }
+  
+  .terminal-content {
+    width: 95%;
+    max-height: 60vh;
+    min-height: 250px;
+  }
+  
+  .terminal-body {
+    padding: 15px;
+    font-size: 12px;
+  }
+  
+  .terminal-header {
+    padding: 10px 12px;
+  }
+  
+  .terminal-title {
+    font-size: 12px;
+  }
 }
 
 /* Terminal Animation Keyframes */
@@ -1225,9 +1258,13 @@ li {
 @media (max-width: 768px) {
   body {
     overflow: auto;
-    font-size: 16px;
-    font-weight: 600;
+    font-size: 18px;
+    font-weight: 700;
     line-height: 1.6;
+    /* Force better font rendering on mobile */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 
   .editor-container {
@@ -1264,6 +1301,9 @@ li {
     gap: 5px;
     justify-content: center;
     align-items: center;
+    /* Better centering on mobile */
+    flex-wrap: nowrap;
+    width: 100%;
   }
 
   .file-list::-webkit-scrollbar {
@@ -1355,10 +1395,14 @@ li {
 
 @media (max-width: 576px) {
   body {
-    font-size: 18px;
-    font-weight: 700;
+    font-size: 20px;
+    font-weight: 800;
     overflow: auto;
     line-height: 1.6;
+    /* Enhanced font rendering for small screens */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 
   .content-wrapper {
@@ -1386,13 +1430,13 @@ li {
   }
 
   p {
-    font-weight: 500;
-    font-size: 16px;
+    font-weight: 700;
+    font-size: 18px;
   }
 
   li {
-    font-weight: 500;
-    font-size: 15px;
+    font-weight: 700;
+    font-size: 17px;
   }
 
   .file-item {

@@ -3,8 +3,129 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ahmed Sami</title>
+
+    <!-- Primary Meta Tags -->
+    <title>
+      Ahmed Sami - Senior Mobile Development Engineer | React Native Expert
+    </title>
+    <meta
+      name="title"
+      content="Ahmed Sami - Senior Mobile Development Engineer | React Native Expert"
+    />
+    <meta
+      name="description"
+      content="Senior Mobile Development Engineer with 6+ years of experience building scalable React Native applications for banking, automotive, and enterprise clients. Currently at Al Rajhi Bank developing retail banking apps serving 2M+ users."
+    />
+    <meta
+      name="keywords"
+      content="Ahmed Sami, Mobile Developer, React Native, Senior Engineer, Al Rajhi Bank, Cross-platform Development, iOS, Android, JavaScript, TypeScript, Mobile Apps, Banking Apps, Riyadh, Saudi Arabia"
+    />
+    <meta name="author" content="Ahmed Sami" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="English" />
+    <meta name="revisit-after" content="7 days" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="profile" />
+    <meta property="og:url" content="https://ahmedsami.me/" />
+    <meta
+      property="og:title"
+      content="Ahmed Sami - Senior Mobile Development Engineer | React Native Expert"
+    />
+    <meta
+      property="og:description"
+      content="Senior Mobile Development Engineer with 6+ years of experience building scalable React Native applications for banking, automotive, and enterprise clients. Currently at Al Rajhi Bank developing retail banking apps serving 2M+ users."
+    />
+    <meta property="og:image" content="https://ahmedsami.me/image.jpg" />
+    <meta
+      property="og:image:alt"
+      content="Ahmed Sami - Senior Mobile Development Engineer"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Ahmed Sami Portfolio" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="profile:first_name" content="Ahmed" />
+    <meta property="profile:last_name" content="Sami" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://ahmedsami.me/" />
+    <meta
+      property="twitter:title"
+      content="Ahmed Sami - Senior Mobile Development Engineer | React Native Expert"
+    />
+    <meta
+      property="twitter:description"
+      content="Senior Mobile Development Engineer with 6+ years of experience building scalable React Native applications for banking, automotive, and enterprise clients. Currently at Al Rajhi Bank developing retail banking apps serving 2M+ users."
+    />
+    <meta property="twitter:image" content="https://ahmedsami.me/image.jpg" />
+    <meta
+      property="twitter:image:alt"
+      content="Ahmed Sami - Senior Mobile Development Engineer"
+    />
+    <meta property="twitter:creator" content="@ahmed_sami_dev" />
+
+    <!-- Additional SEO Meta Tags -->
+    <meta name="theme-color" content="#1a1a1a" />
+    <meta name="msapplication-TileColor" content="#1a1a1a" />
+    <meta name="application-name" content="Ahmed Sami Portfolio" />
+    <meta name="apple-mobile-web-app-title" content="Ahmed Sami" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="format-detection" content="telephone=no" />
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Ahmed Sami",
+        "alternateName": "Ahmed Sami Elsherif",
+        "description": "Senior Mobile Development Engineer with 6+ years of experience building scalable React Native applications",
+        "url": "https://ahmedsami.me",
+        "image": "https://ahmedsami.me/image.jpg",
+        "jobTitle": "Senior Mobile Development Engineer",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Al Rajhi Bank"
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Riyadh",
+          "addressCountry": "Saudi Arabia"
+        },
+        "email": "ahmed.sami.elsherif@gmail.com",
+        "telephone": "+966501481461",
+        "sameAs": [
+          "https://linkedin.com/in/a-sami",
+          "https://github.com/asamiz"
+        ],
+        "knowsAbout": [
+          "React Native",
+          "Mobile Development",
+          "Cross-platform Development",
+          "iOS Development",
+          "Android Development",
+          "JavaScript",
+          "TypeScript",
+          "CI/CD",
+          "Banking Applications",
+          "Fintech"
+        ],
+        "alumniOf": {
+          "@type": "Organization",
+          "name": "Zagazig University",
+          "department": "Faculty of Engineering"
+        }
+      }
+    </script>
+
     <link rel="icon" type="image/jpeg" href="./image.jpg" />
+    <link rel="apple-touch-icon" href="./image.jpg" />
     <link rel="stylesheet" href="styles.css" />
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -12,6 +133,28 @@
     />
   </head>
   <body>
+    <!-- Terminal Boot Sequence -->
+    <div id="terminal-loader" class="terminal-loader">
+      <div class="terminal-content">
+        <div class="terminal-header">
+          <div class="terminal-buttons">
+            <span class="terminal-btn close"></span>
+            <span class="terminal-btn minimize"></span>
+            <span class="terminal-btn maximize"></span>
+          </div>
+          <span class="terminal-title">Sami's Terminal</span>
+        </div>
+        <div class="terminal-body">
+          <div class="terminal-line">
+            <span class="prompt">$</span>
+            <span class="command" id="boot-command"></span>
+            <span class="cursor">|</span>
+          </div>
+          <div id="boot-output"></div>
+        </div>
+      </div>
+    </div>
+
     <div class="editor-container">
       <!-- File Explorer Sidebar -->
       <div class="sidebar">
@@ -21,29 +164,35 @@
         </div>
 
         <div class="file-list">
-          <div class="file-item active" data-file="overview">
+          <div class="file-item active tooltip" data-file="overview">
             <i class="fas fa-user"></i>
             <span>overview.md</span>
+            <span class="tooltip-text">Overview</span>
           </div>
-          <div class="file-item" data-file="experience">
+          <div class="file-item tooltip" data-file="experience">
             <i class="fas fa-briefcase"></i>
             <span>experience.md</span>
+            <span class="tooltip-text">Experience</span>
           </div>
-          <div class="file-item" data-file="skills">
+          <div class="file-item tooltip" data-file="skills">
             <i class="fas fa-code"></i>
             <span>skills.md</span>
+            <span class="tooltip-text">Skills</span>
           </div>
-          <div class="file-item" data-file="projects">
+          <div class="file-item tooltip" data-file="projects">
             <i class="fas fa-rocket"></i>
             <span>projects.md</span>
+            <span class="tooltip-text">Projects</span>
           </div>
-          <div class="file-item" data-file="education">
+          <div class="file-item tooltip" data-file="education">
             <i class="fas fa-graduation-cap"></i>
             <span>education.md</span>
+            <span class="tooltip-text">Education</span>
           </div>
-          <div class="file-item" data-file="contact">
+          <div class="file-item tooltip" data-file="contact">
             <i class="fas fa-envelope"></i>
             <span>contact.md</span>
+            <span class="tooltip-text">Contact</span>
           </div>
         </div>
       </div>
@@ -52,14 +201,34 @@
       <div class="main-area">
         <!-- Tab Bar -->
         <div class="tab-bar">
-          <div class="tab active">
+          <div class="tab active" data-tab="overview">
             <i class="fas fa-user"></i>
             <span>overview.md</span>
+            <span class="close-btn">×</span>
           </div>
         </div>
 
         <!-- Content Display -->
         <div class="content-area">
+          <!-- Empty State -->
+          <div class="empty-state" id="empty-state" style="display: none;">
+            <div class="empty-state-content">
+              <div class="empty-state-icon">
+                <i class="fas fa-file-code"></i>
+              </div>
+              <h2>Welcome to Ahmed Sami's Portfolio</h2>
+              <p>Click on any section in the sidebar to open a new tab and explore my professional experience.</p>
+              <div class="empty-state-suggestions">
+                <span>Try clicking on:</span>
+                <div class="suggestion-tags">
+                  <span class="suggestion-tag" data-file="overview">📄 Overview</span>
+                  <span class="suggestion-tag" data-file="skills">💻 Skills</span>
+                  <span class="suggestion-tag" data-file="projects">🚀 Projects</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <!-- Overview Content -->
           <div class="file-content active" id="overview-content">
             <div class="content-wrapper">
@@ -710,7 +879,7 @@
                     <div class="contact-action">
                       <button
                         class="contact-btn"
-                        onclick="navigator.clipboard.writeText('(+966) - 50 - 148 - 1461')"
+                        onclick="window.portfolio.copyPhoneNumber()"
                       >
                         Copy Number
                       </button>
@@ -806,5 +975,6 @@
     </div>
 
     <script src="script.js"></script>
+    <script src="animations.js"></script>
   </body>
 </html>

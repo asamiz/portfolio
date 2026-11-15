@@ -1,29 +1,43 @@
 ---
 import Base from '../../layouts/Base.astro';
-import { getArticles, formatDate, readingTime } from '../../lib/articles';
+import { getArticles, groupByYear, formatShortDate } from '../../lib/articles';
 
-const articles = await getArticles();
+const groups = groupByYear(await getArticles());
 ---
 
-<Base title="Articles — Ahmed Sami" description="Every week I study a topic I don't know yet and write what I learned.">
-  <nav><a href="/">Ahmed Sami</a></nav>
+<Base title="Articles — Ahmed Sami" description="Weekly notes on topics I'm learning.">
+  <div class="articles">
+    <div class="heading">
+      <h1 class="page-title">Articles</h1>
+      <p class="muted">Weekly notes on topics I'm learning.</p>
+    </div>
 
-  <h1>Articles</h1>
-
-  {articles.length === 0 ? (
-    <p>The first article is on its way.</p>
-  ) : (
-    <ul>
-      {articles.map((a) => (
-        <li>
-          <span>Week {a.data.week}</span>
-          <a href={`/articles/${a.id}/`}>{a.data.title}</a>
-          {a.data.draft && <span>Draft</span>}
-          <p>{a.data.description}</p>
-          <time datetime={a.data.date.toISOString()}>{formatDate(a.data.date)}</time>
-          <span>{readingTime(a.body)}</span>
-        </li>
-      ))}
-    </ul>
-  )}
+    {groups.length === 0 ? (
+      <p class="muted">The first article is on its way.</p>
+    ) : (
+      groups.map((g) => (
+        <section class="year">
+          <h2 class="mono">{g.year}</h2>
+          {g.items.map((a) => (
+            <a class="row" href={`/articles/${a.id}/`}>
+              <span>
+                {a.data.title}
+                {a.data.draft && <span class="mono"> (draft)</span>}
+              </span>
+              <span class="mono">{formatShortDate(a.data.date)}</span>
+            </a>
+          ))}
+        </section>
+      ))
+    )}
+  </div>
 </Base>
+
+<style>
+  .articles { display: flex; flex-direction: column; gap: 48px; }
+  .heading { display: flex; flex-direction: column; gap: 8px; }
+  p { margin: 0; }
+  .year { display: flex; flex-direction: column; gap: 4px; }
+  .year h2 { margin: 0 0 4px; font-weight: 400; }
+  .year .row { padding: 8px 0; }
+</style>

@@ -7,9 +7,8 @@ const articles = defineCollection({
   loader: glob({ pattern: '**/[^_]*.md', base: './src/content/articles' }),
   schema: z.object({
     title: z.string(),
-    // The week's topic as a question, shown under the title and in the list.
+    // One-line summary, used for search engines, link previews and RSS.
     description: z.string(),
-    week: z.number().int().nonnegative(),
     date: z.coerce.date(),
     sources: z
       .array(z.object({ title: z.string(), url: z.string().url() }))

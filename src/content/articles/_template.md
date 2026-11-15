@@ -1,10 +1,9 @@
 ---
-# Copy this file to week-NN-short-topic.md (e.g. week-01-how-dns-works.md),
+# Copy this file to a new name like how-dns-works.md (the file name becomes the URL),
 # fill in the fields, and set draft to false when it's ready to publish.
 # Files that start with "_" are never published.
 title: "Short title of the topic"
-description: "The week's topic as a question, e.g. Why can a bank collapse in one night?"
-week: 1
+description: "One-line summary for search engines and link previews."
 date: 2026-11-22
 sources:
   - title: "Name of the source"

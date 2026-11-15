@@ -1,0 +1,85 @@
+:root {
+  --bg: #f5f7fa;
+  --ink: #15202b;
+  --muted: #5b6672;
+  --rule: #dce2e8;
+  --accent: #2b55c9;
+  --accent-ink: #ffffff;
+  --code-bg: #eaeef3;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #12161b;
+    --ink: #e8ecf0;
+    --muted: #9aa5b1;
+    --rule: #29313a;
+    --accent: #8aa6ff;
+    --accent-ink: #12161b;
+    --code-bg: #1b2128;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Schibsted Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+main {
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: clamp(3rem, 10vw, 6rem) 1.5rem 4rem;
+}
+
+a { color: inherit; }
+
+a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.text-link {
+  text-decoration: underline;
+  text-decoration-color: var(--rule);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+.text-link:hover { text-decoration-color: var(--accent); }
+
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: clamp(2.5rem, 8vw, 4rem);
+}
+
+.top-nav a { text-decoration: none; font-weight: 500; }
+.top-nav a:hover { color: var(--accent); }
+
+.site-footer {
+  margin-top: 4rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+/* Code highlighting: Shiki writes both light and dark colors; pick one per mode. */
+.astro-code { background-color: var(--code-bg) !important; }
+
+@media (prefers-color-scheme: dark) {
+  .astro-code,
+  .astro-code span {
+    color: var(--shiki-dark) !important;
+    font-style: var(--shiki-dark-font-style) !important;
+    font-weight: var(--shiki-dark-font-weight) !important;
+  }
+}

@@ -1,0 +1,159 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import avatar from '../assets/image.jpg';
+
+// TODO: replace with the email address you want to show publicly.
+const email = 'YOUR_EMAIL_HERE';
+
+const contacts = [
+  { label: 'Email', href: `mailto:${email}` },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/a-sami' },
+  { label: 'GitHub', href: 'https://github.com/asamiz' },
+  { label: 'X', href: 'https://x.com/ahmed_sami_dev' },
+];
+
+const jobs = [
+  {
+    dates: 'Nov 2023 – now',
+    role: 'Senior Mobile Engineer',
+    company: 'Al Rajhi Bank',
+    what: "Retail banking app. Shipped the Apple Wallet extension and built the app's CI/CD pipeline.",
+  },
+  {
+    dates: 'May 2023 – Nov 2023',
+    role: 'Senior Cross-Platform Engineer',
+    company: 'Instabug',
+    what: 'Built and maintained SDKs for React Native, Flutter, Ionic, Cordova and Unity.',
+  },
+  {
+    dates: 'Aug 2021 – May 2023',
+    role: 'Senior Mobile Development Engineer',
+    company: 'Valeo',
+    what: 'Built cross-platform iOS and Android apps in React Native, with CI/CD on Jenkins and Fastlane and support for 10+ languages.',
+  },
+  {
+    dates: 'Jan 2020 – Nov 2023',
+    role: 'Part-time Instructor',
+    company: 'ITI',
+    what: 'Taught React Native and MongoDB courses.',
+  },
+];
+---
+
+<Base
+  title="Ahmed Sami — Senior Mobile Engineer"
+  description="Ahmed Sami, Senior Mobile Engineer in Riyadh. React Native, iOS and Android. Experience, contact, and weekly articles."
+>
+  <header class="intro">
+    <Image src={avatar} alt="Illustrated portrait of Ahmed Sami" width={192} class="avatar" loading="eager" />
+    <h1>Ahmed Sami</h1>
+    <p>
+      <strong>Senior Mobile Engineer in Riyadh.</strong> I build iOS and Android apps with React Native and
+      native code. 7+ years across banking, developer tools and automotive.
+    </p>
+    <div class="actions">
+      <a class="articles-link" href="/articles/">Read my articles</a>
+      <ul class="contact" aria-label="Contact">
+        {contacts.map((c) => (
+          <li><a class="text-link" href={c.href}>{c.label}</a></li>
+        ))}
+      </ul>
+    </div>
+  </header>
+
+  <section aria-labelledby="experience">
+    <h2 id="experience">Experience</h2>
+    <ul class="jobs">
+      {jobs.map((job) => (
+        <li>
+          <span class="dates">{job.dates}</span>
+          <div>
+            <p class="role">{job.role} <span class="company">at {job.company}</span></p>
+            <p class="what">{job.what}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </section>
+</Base>
+
+<style>
+  .avatar {
+    display: block;
+    width: 96px;
+    height: 96px;
+    object-fit: cover;
+    object-position: 50% 25%;
+    border-radius: 50%;
+    margin-bottom: 1.75rem;
+  }
+  .intro h1 {
+    margin: 0;
+    font-size: clamp(3.25rem, 13vw, 6.5rem);
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+  }
+  .intro p {
+    margin: 1.5rem 0 0;
+    max-width: 34rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    color: var(--muted);
+  }
+  .intro p strong { color: var(--ink); font-weight: 500; }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 1.5rem;
+    margin-top: 2.25rem;
+  }
+  .articles-link {
+    display: inline-block;
+    padding: 0.75rem 1.25rem;
+    background: var(--accent);
+    color: var(--accent-ink);
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 999px;
+  }
+  .articles-link:hover { filter: brightness(1.08); }
+  .contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.25rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  section { margin-top: clamp(4rem, 10vw, 6rem); }
+  h2 { margin: 0 0 1.5rem; font-size: 1.25rem; font-weight: 500; }
+
+  .jobs { margin: 0; padding: 0; list-style: none; }
+  .jobs li {
+    display: grid;
+    grid-template-columns: 10.5rem 1fr;
+    gap: 1rem;
+    padding: 1.25rem 0;
+    border-top: 1px solid var(--rule);
+  }
+  .jobs li:last-child { border-bottom: 1px solid var(--rule); }
+  .dates {
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+    font-size: 0.95rem;
+    white-space: nowrap;
+    padding-top: 0.1rem;
+  }
+  .role { margin: 0; font-weight: 500; }
+  .company { color: var(--muted); font-weight: 400; }
+  .what { margin: 0.35rem 0 0; color: var(--muted); }
+
+  @media (max-width: 36rem) {
+    .jobs li { grid-template-columns: 1fr; gap: 0.25rem; }
+  }
+</style>

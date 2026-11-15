@@ -5,86 +5,25 @@ import { getArticles, formatDate, readingTime } from '../../lib/articles';
 const articles = await getArticles();
 ---
 
-<Base
-  title="Articles — Ahmed Sami"
-  description="Every week I study a topic I don't know yet and write what I learned."
->
-  <nav class="top-nav" aria-label="Site">
-    <a href="/">Ahmed Sami</a>
-    <a href="/rss.xml">RSS</a>
-  </nav>
+<Base title="Articles — Ahmed Sami" description="Every week I study a topic I don't know yet and write what I learned.">
+  <nav><a href="/">Ahmed Sami</a></nav>
 
   <h1>Articles</h1>
-  <p class="lede">Every week I pick a topic I don't know yet, study it, and write what I learned.</p>
 
   {articles.length === 0 ? (
-    <p class="empty">The first article is on its way.</p>
+    <p>The first article is on its way.</p>
   ) : (
-    <ul class="list">
+    <ul>
       {articles.map((a) => (
         <li>
-          <span class="week">Week {a.data.week}</span>
-          <div>
-            <a class="title" href={`/articles/${a.id}/`}>{a.data.title}</a>
-            {a.data.draft && <span class="draft">Draft</span>}
-            <p class="desc">{a.data.description}</p>
-            <p class="meta">
-              <time datetime={a.data.date.toISOString()}>{formatDate(a.data.date)}</time>
-              <span>{readingTime(a.body)}</span>
-            </p>
-          </div>
+          <span>Week {a.data.week}</span>
+          <a href={`/articles/${a.id}/`}>{a.data.title}</a>
+          {a.data.draft && <span>Draft</span>}
+          <p>{a.data.description}</p>
+          <time datetime={a.data.date.toISOString()}>{formatDate(a.data.date)}</time>
+          <span>{readingTime(a.body)}</span>
         </li>
       ))}
     </ul>
   )}
 </Base>
-
-<style>
-  h1 {
-    margin: 0;
-    font-size: clamp(2.5rem, 9vw, 4rem);
-    font-weight: 700;
-    line-height: 1;
-    letter-spacing: -0.035em;
-  }
-  .lede { margin: 1rem 0 0; max-width: 34rem; font-size: 1.15rem; color: var(--muted); }
-  .empty { margin-top: 3rem; color: var(--muted); }
-
-  .list { margin: 3rem 0 0; padding: 0; list-style: none; }
-  .list li {
-    display: grid;
-    grid-template-columns: 6rem 1fr;
-    gap: 1rem;
-    padding: 1.25rem 0;
-    border-top: 1px solid var(--rule);
-  }
-  .list li:last-child { border-bottom: 1px solid var(--rule); }
-  .week { color: var(--muted); font-variant-numeric: tabular-nums; font-size: 0.95rem; padding-top: 0.15rem; }
-  .title {
-    font-size: 1.2rem;
-    font-weight: 500;
-    text-decoration: none;
-  }
-  .title:hover { color: var(--accent); }
-  .draft {
-    margin-left: 0.5rem;
-    padding: 0.1rem 0.5rem;
-    font-size: 0.8rem;
-    border: 1px solid var(--rule);
-    border-radius: 999px;
-    color: var(--muted);
-    vertical-align: 0.15em;
-  }
-  .desc { margin: 0.35rem 0 0; color: var(--muted); }
-  .meta {
-    display: flex;
-    gap: 1rem;
-    margin: 0.5rem 0 0;
-    font-size: 0.9rem;
-    color: var(--muted);
-  }
-
-  @media (max-width: 36rem) {
-    .list li { grid-template-columns: 1fr; gap: 0.25rem; }
-  }
-</style>

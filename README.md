@@ -25,8 +25,9 @@ npm run build    # outputs the static site to dist/
 
 ## Where things live
 
-- `src/pages/index.astro` — homepage, experience list and contact links
+- `src/data/profile.ts` — homepage content: intro, contact links, experience
+- `src/pages/index.astro` — homepage
 - `src/pages/articles/` — articles list and article pages
 - `src/content/articles/` — the Markdown articles
 - `src/assets/image.jpg` — the avatar
-- `src/styles/global.css` — colors and shared styles
+- `src/layouts/Base.astro` — shared `<head>` and page wrapper

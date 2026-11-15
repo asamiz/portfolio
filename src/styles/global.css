@@ -1,0 +1,134 @@
+:root {
+  --bg: #faf9f6;
+  --text: #222222;
+  --muted: #6b6b6b;
+  --surface: color-mix(in srgb, var(--bg) 94%, var(--text));
+  --border: color-mix(in srgb, var(--bg) 86%, var(--text));
+  --font-sans: 'Geist', system-ui, sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, monospace;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #16181d;
+    --text: #e4e4e4;
+    --muted: #9a9a9a;
+    color-scheme: dark;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Page frame: centered 680px column, footer pinned to the bottom. */
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 0 24px;
+}
+
+.container {
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding-top: 40px;
+  font-size: 16px;
+}
+
+.site-header a { color: var(--text); text-decoration: none; }
+.site-header .home { font-weight: 600; }
+.site-header .nav:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+.site-main {
+  display: flex;
+  flex-direction: column;
+  margin-top: 96px;
+  padding-bottom: 80px;
+}
+
+.site-footer {
+  margin-top: auto;
+  border-top: 1px solid var(--border);
+  padding: 24px 0 40px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.site-footer a { color: var(--muted); text-decoration: none; }
+.site-footer a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* Shared pieces */
+.page-title {
+  margin: 0;
+  font-size: 36px;
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.muted { color: var(--muted); }
+
+.link {
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: var(--muted);
+  text-underline-offset: 3px;
+}
+
+.link:hover { text-decoration-color: var(--text); }
+
+.mono {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* A row with a title on the left and a date on the right (home + articles list). */
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.row:hover { text-decoration: underline; text-underline-offset: 3px; }
+.row .mono { white-space: nowrap; }
+
+@media (max-width: 640px) {
+  .page { padding: 0 20px; }
+  .site-header { padding-top: 24px; }
+  .site-main { margin-top: 48px; }
+  .page-title { font-size: 30px; }
+}

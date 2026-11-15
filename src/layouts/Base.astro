@@ -1,0 +1,64 @@
+---
+import { getImage } from 'astro:assets';
+import avatar from '../assets/image.jpg';
+import { profile, footerLinks } from '../data/profile';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  type?: 'website' | 'article';
+}
+
+const { title, description, type = 'website' } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = await getImage({ src: avatar, width: 600, format: 'jpg' });
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" type="application/rss+xml" title={`${profile.name} — Articles`} href="/rss.xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta property="og:type" content={type} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL(ogImage.src, Astro.site)} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="page">
+      <div class="container">
+        <header class="site-header">
+          <a class="home" href="/">{profile.name}</a>
+          <a class="nav" href="/articles/">Articles</a>
+        </header>
+
+        <main class="site-main">
+          <slot />
+        </main>
+
+        <footer class="site-footer">
+          {footerLinks.map((l) => (
+            <>
+              <a href={l.href}>{l.label}</a>
+              <span aria-hidden="true">·</span>
+            </>
+          ))}
+          <span>© {new Date().getFullYear()}</span>
+        </footer>
+      </div>
+    </div>
+  </body>
+</html>

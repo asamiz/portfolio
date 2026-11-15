@@ -6,13 +6,11 @@ export const profile = {
   tagline: "I love software and I'm trying to get better every day.",
 };
 
-// TODO: replace YOUR_EMAIL_HERE with the email address you want to show publicly.
-const email = 'mailto:YOUR_EMAIL_HERE';
+const email = 'mailto:ahmed.sami.elsherif@gmail.com';
 const linkedin = 'https://www.linkedin.com/in/a-sami';
 const github = 'https://github.com/asamiz';
 
-// Links under the intro on the homepage.
-// TODO: add your CV as public/cv.pdf so the "Download CV" link works.
+// Links under the intro on the homepage. To update the CV, replace public/cv.pdf.
 export const introLinks = [
   { label: 'Email', href: email },
   { label: 'LinkedIn', href: linkedin },

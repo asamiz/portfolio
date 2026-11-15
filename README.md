@@ -27,7 +27,7 @@ npm run build    # outputs the static site to dist/
 
 - `src/data/profile.ts` — homepage content: name, title, tagline, contact links
 - `src/styles/global.css` — colors, fonts and shared styles from the design
-- `public/cv.pdf` — your CV (add it so "Download CV" works)
+- `public/cv.pdf` — the CV behind the "Download CV" link
 - `src/pages/index.astro` — homepage
 - `src/pages/articles/` — articles list and article pages
 - `src/content/articles/` — the Markdown articles

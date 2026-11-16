@@ -4,11 +4,20 @@ import Base from '../layouts/Base.astro';
 import avatar from '../assets/image.jpg';
 import { profile, introLinks } from '../data/profile';
 import { getArticles, formatDate } from '../lib/articles';
+import { person } from '../lib/seo';
 
 const latest = (await getArticles()).slice(0, 3);
+const site = Astro.site!;
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    { '@type': 'WebSite', name: profile.name, url: site.href },
+    { '@type': 'ProfilePage', url: site.href, mainEntity: await person(site) },
+  ],
+};
 ---
 
-<Base title={`${profile.name} — ${profile.title}`} description={`${profile.title}. ${profile.tagline}`}>
+<Base title={`${profile.name} — ${profile.title}`} description={`${profile.title}. ${profile.tagline}`} jsonLd={jsonLd}>
   <div class="home">
     <section class="intro">
       <Image src={avatar} alt={profile.name} width={192} class="avatar" loading="eager" />

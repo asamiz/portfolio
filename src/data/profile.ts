@@ -10,6 +10,9 @@ const email = 'mailto:ahmed.sami.elsherif@gmail.com';
 const linkedin = 'https://www.linkedin.com/in/a-sami';
 const github = 'https://github.com/asamiz';
 
+// Your profiles on other sites. Search engines use these to link them to this site.
+export const profileLinks = [linkedin, github];
+
 // Links under the intro on the homepage. To update the CV, replace public/cv.pdf.
 export const introLinks = [
   { label: 'Email', href: email },

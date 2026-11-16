@@ -31,5 +31,8 @@ npm run build    # outputs the static site to dist/
 - `src/pages/index.astro` — homepage
 - `src/pages/articles/` — articles list and article pages
 - `src/content/articles/` — the Markdown articles
-- `src/assets/image.jpg` — the avatar
-- `src/layouts/Base.astro` — shared `<head>` and page wrapper
+- `src/assets/image.jpg` — the avatar (also used for link previews)
+- `public/favicon.ico`, `public/icon-192.png`, `public/apple-touch-icon.png` — icons made from the avatar; remake them if you change the avatar
+- `src/layouts/Base.astro` — shared `<head>` and page wrapper, including SEO and link-preview tags
+- `src/lib/seo.ts` — structured data (schema.org) for search engines
+- `public/robots.txt` — tells search engines they can crawl the site and where the sitemap is

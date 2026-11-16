@@ -4,7 +4,7 @@
   --muted: #6b6b6b;
   --surface: color-mix(in srgb, var(--bg) 94%, var(--text));
   --border: color-mix(in srgb, var(--bg) 86%, var(--text));
-  --font-sans: 'Geist', system-ui, sans-serif;
+  --font-serif: 'Source Serif 4', Georgia, serif;
   --font-mono: 'Geist Mono', ui-monospace, monospace;
   color-scheme: light;
 }
@@ -24,9 +24,9 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: var(--font-sans);
-  font-size: 17px;
-  line-height: 1.6;
+  font-family: var(--font-serif);
+  font-size: 18px;
+  line-height: 1.7;
 }
 
 a:focus-visible {
@@ -93,7 +93,7 @@ a:focus-visible {
   font-size: 36px;
   line-height: 1.2;
   font-weight: 600;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
 }
 
 .muted { color: var(--muted); }
